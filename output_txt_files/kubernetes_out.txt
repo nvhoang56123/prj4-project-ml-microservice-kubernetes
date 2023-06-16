@@ -1,1 +1,20 @@
 <paste log output from Kubernetes-mediated prediction, here>
+
+./run_kubernetes.sh
+NAME                                                              READY   STATUS    RESTARTS        AGE
+prj4-project-ml-microservice-kubernetes-7ff9d7b947-xr6ws          1/1     Running   0               52s
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
+Handling connection for 8080
+
+kubectl get pods
+NAME                                                              READY   STATUS    RESTARTS        AGE
+prj4-project-ml-microservice-kubernetes-7ff9d7b947-xr6ws          1/1     Running   0               3m18s
+
+./make_prediction.sh
+Port: 8080
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
