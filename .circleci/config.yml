@@ -1,17 +1,12 @@
 version: 2.1
 executors:
-  my-custom-executor:
+  hnguyen3-executor:
     docker:
-      - image: cimg/base:stable
-        auth:
-          # ensure you have first added these secrets
-          # visit app.circleci.com/settings/project/github/nvhoang56123/prj4-project-ml-microservice-kubernetes/environment-variables
-          username: $DOCKER_HUB_USER
-          password: $DOCKER_HUB_PASSWORD
-jobs:
-  my-job-name:
+      - image: python:3.7.3-stretch
 
-    executor: my-custom-executor
+jobs:
+  build:
+    executor:  hnguyen3-executor
     steps:
       - checkout
       - run: |
@@ -20,4 +15,4 @@ jobs:
 workflows:
   my-custom-workflow:
     jobs:
-      - my-job-name
+      - build
