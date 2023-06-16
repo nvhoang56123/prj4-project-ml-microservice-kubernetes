@@ -50,7 +50,7 @@ jobs:
 
             echo "We gonna test app.py"
             #pylint app.py
-            find ~/ -o "*pylint*"
+            find ~/ -name "*pylint*"
 
       - store_test_results:
           path: test-results
