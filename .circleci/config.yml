@@ -46,7 +46,7 @@ jobs:
             /bin/hadolint Dockerfile
 
             echo "We gonna test app.py"
-            # splint app.py
+            pylint app.py
       - store_test_results:
           path: test-results
       - store_artifacts:
