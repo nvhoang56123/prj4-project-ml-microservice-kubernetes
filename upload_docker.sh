@@ -11,7 +11,7 @@ docker_path=hnguyen3
 # Step 2:
 # Authenticate & tag
 echo "Docker ID and Image: $docker_path"
-docker login -u mithie
+docker login -u hnguyen3
 docker tag prj4-project-ml-microservice-kubernetes:latest $docker_path/prj4-project-ml-microservice-kubernetes:latest
 
 # Step 3:
