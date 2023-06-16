@@ -1,6 +1,19 @@
 <paste log output from Docker prediction, here>
+[Make Prediction After Docker Run]
+[hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ ./make_prediction.sh
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+
+[GET ContainerID]
+[hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ sudo docker container ls
 CONTAINER ID   IMAGE                                           COMMAND           CREATED          STATUS         PORTS                  NAMES
 369414d58ff5   prj4-project-ml-microservice-kubernetes:1.0.0   "python app.py"   10 seconds ago   Up 8 seconds   0.0.0.0:8000->80/tcp   objective_shtern
+
+[Check Logs]
 [hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ sudo docker container logs 369414d58ff5
  * Serving Flask app "app" (lazy loading)
  * Environment: production

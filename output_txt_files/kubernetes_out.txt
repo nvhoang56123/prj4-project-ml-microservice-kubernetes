@@ -1,21 +1,22 @@
 <paste log output from Kubernetes-mediated prediction, here>
 
+[First run]
 [hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ ./run_kubernetes.sh
 deployment.apps/prj4-project-ml-microservice-kubernetes created
-NAME                                                      READY   STATUS    RESTARTS   AGE
-prj4-project-ml-microservice-kubernetes-d8696b5bf-d46xh   2/2     Running   0          41s
-Forwarding from 127.0.0.1:8080 -> 80
-Forwarding from [::1]:8080 -> 80
-Handling connection for 8080
+NAME                                                      READY   STATUS            RESTARTS   AGE
+prj4-project-ml-microservice-kubernetes-d8696b5bf-d46xh   0/2     PodInitializing   0          0s
+error: unable to forward port because pod is not running. Current status=PodInitializing
 
+[Run `kubectl get pods` to check whether the pod is running:]
 [hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ kubectl get pods
 NAME                                                              READY   STATUS    RESTARTS        AGE
-prj4-project-ml-microservice-kubernetes-d8696b5bf-d46xh           2/2     Running   0               3m18s
+prj4-project-ml-microservice-kubernetes-d8696b5bf-d46xh           2/2     Running   0               21s
 
-[hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ ./make_prediction.sh
-Port: 8000
-{
-  "prediction": [
-    20.35373177134412
-  ]
-}
+[Run again after the pod status is Running:]
+[hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ ./run_kubernetes.sh
+error: failed to create deployment: deployments.apps "prj4-project-ml-microservice-kubernetes" already exists
+NAME                                                              READY   STATUS    RESTARTS        AGE
+prj4-project-ml-microservice-kubernetes-d8696b5bf-d46xh           2/2     Running   0               3m18s
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
