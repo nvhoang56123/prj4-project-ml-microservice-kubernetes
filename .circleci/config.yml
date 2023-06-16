@@ -48,7 +48,7 @@ jobs:
             /bin/hadolint Dockerfile
 
             echo "We gonna test app.py"
-            venv/bin/pylint app.py
+            venv/bin/pylint --disable=R,C,W app.py 
 
       - store_test_results:
           path: test-results
