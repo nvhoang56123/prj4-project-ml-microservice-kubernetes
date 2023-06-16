@@ -25,6 +25,9 @@ jobs:
             wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
             chmod +x /bin/hadolint
 
+            # Install lint
+            # apk add --update lint
+
       - save_cache:
           paths:
             - ./venv
@@ -32,18 +35,18 @@ jobs:
 
       # run lint!
       - run:
-          name: run lint
+          name: Run lint
           command: |
             . venv/bin/activate
             make lint
       - run:
           name: Run Tests
-          command: |
-            ls
-            echo "THEN RUN TEST"
+          command: |            
+            echo "We gonna test Dockerfile"
             /bin/hadolint Dockerfile
-            echo "NEW RESULT"
-            ls -l
+
+            echo "We gonna test app.py"
+            lint app.py
       - store_test_results:
           path: test-results
       - store_artifacts:
