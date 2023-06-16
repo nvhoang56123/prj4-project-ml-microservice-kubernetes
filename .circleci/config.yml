@@ -8,14 +8,14 @@ jobs:
   build:
     executor:  hnguyen3-executor
     steps:
-      - checkout
-      - working_directory: .
+      - checkout      
       - restore_cache:
           keys:
             - dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: Install python dependencies
+          working_directory: .
           command: |
             python3 -m venv venv
             . venv/bin/activate
