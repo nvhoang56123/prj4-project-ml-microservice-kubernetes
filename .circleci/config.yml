@@ -25,8 +25,9 @@ jobs:
             wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
             chmod +x /bin/hadolint
 
-            # Install lint
+            # Install pylint
             pip install pylint
+            chmod +x  venv/bin/pylint
 
       - save_cache:
           paths:
@@ -46,11 +47,8 @@ jobs:
             echo "We gonna test Dockerfile"
             /bin/hadolint Dockerfile
 
-            ls -l
-
             echo "We gonna test app.py"
-            #pylint app.py
-            find ~/ -name "*pylint*"
+            venv/bin/pylint app.py
 
       - store_test_results:
           path: test-results
