@@ -26,7 +26,7 @@ jobs:
             chmod +x /bin/hadolint
 
             # Install lint
-            # apk add --update lint
+            apk add --update lint
 
       - save_cache:
           paths:
