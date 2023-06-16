@@ -46,9 +46,11 @@ jobs:
             echo "We gonna test Dockerfile"
             /bin/hadolint Dockerfile
 
+            ls -l
+
             echo "We gonna test app.py"
             #pylint app.py
-            which pylint
+            find ~/ -o "*pylint*"
 
       - store_test_results:
           path: test-results
