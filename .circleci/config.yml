@@ -2,7 +2,7 @@ version: 2.1
 executors:
   hnguyen3-executor:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: python:3.7.3-stretch
 
 jobs:
   build:
@@ -19,13 +19,14 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
+            make install
             
             # Install hadolint
             wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
             chmod +x /bin/hadolint
 
             # Install lint
-            apk add --update lint
+            sudo apt-get install splint
 
       - save_cache:
           paths:
@@ -45,7 +46,7 @@ jobs:
             /bin/hadolint Dockerfile
 
             echo "We gonna test app.py"
-            lint app.py
+            splint app.py
       - store_test_results:
           path: test-results
       - store_artifacts:
