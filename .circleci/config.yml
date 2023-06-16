@@ -7,9 +7,9 @@ executors:
 jobs:
   build:
     executor:  hnguyen3-executor
-    working_directory: .
     steps:
       - checkout
+      - working_directory: .
       - restore_cache:
           keys:
             - dependencies-{{ checksum "requirements.txt" }}
