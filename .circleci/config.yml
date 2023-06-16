@@ -9,10 +9,44 @@ jobs:
     executor:  hnguyen3-executor
     steps:
       - checkout
-      - run: |
-          # echo Hello, World!
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: Install python dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            make install
+            
+            # Install hadolint
+            wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
+            chmod +x /bin/hadolint
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: dependencies-{{ checksum "requirements.txt" }}
+
+      # run lint!
+      - run:
+          name: run lint
+          command: |
+            . venv/bin/activate
+            make lint
+      - run:
+          name: Run Tests
+          command: |
+            source ~/.devops/bin/activate
+            make test-junit
+      - store_test_results:
+          path: ~/test-results
+
+      - store_artifacts:
+          path: ~/test-results
 
 workflows:
-  my-custom-workflow:
+  prj4-project-ml-microservice-kubernetes:
     jobs:
       - build
