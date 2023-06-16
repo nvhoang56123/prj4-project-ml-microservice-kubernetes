@@ -12,7 +12,7 @@ NAME                                                              READY   STATUS
 prj4-project-ml-microservice-kubernetes-7ff9d7b947-xr6ws          1/1     Running   0               3m18s
 
 ./make_prediction.sh
-Port: 8080
+Port: 8000
 {
   "prediction": [
     20.35373177134412
