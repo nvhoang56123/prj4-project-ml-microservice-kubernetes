@@ -1,6 +1,6 @@
 # Step 1:
 # This is your Docker ID/path
-docker_path=hnguyen3/
+docker_path=hnguyen3
 
 # Step 2
 # Run the Docker Hub container with kubernetes
