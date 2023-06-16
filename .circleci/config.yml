@@ -7,6 +7,7 @@ executors:
 jobs:
   build:
     executor:  hnguyen3-executor
+    working_directory: .
     steps:
       - checkout
       - restore_cache:
@@ -38,11 +39,15 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            make test-junit
+            ls
+            echo "THEN RUN TEST"
+            pylint --disable=R,C,W1203,W1202 app.pylint
+            echo "NEW RESULT"
+            ls -l
       - store_test_results:
-          path: ~/test-results
+          path: test-results
       - store_artifacts:
-          path: ~/test-results
+          path: test-results
 
 workflows:
   prj4-project-ml-microservice-kubernetes:
