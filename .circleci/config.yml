@@ -41,7 +41,7 @@ jobs:
           command: |
             ls
             echo "THEN RUN TEST"
-            pylint --disable=R,C,W1203,W1202 app.pylint
+            lint --disable=R,C,W1203,W1202 app.py
             echo "NEW RESULT"
             ls -l
       - store_test_results:
