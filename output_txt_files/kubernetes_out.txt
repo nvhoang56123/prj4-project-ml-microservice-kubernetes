@@ -1,17 +1,18 @@
 <paste log output from Kubernetes-mediated prediction, here>
 
-./run_kubernetes.sh
-NAME                                                              READY   STATUS    RESTARTS        AGE
-prj4-project-ml-microservice-kubernetes-7ff9d7b947-xr6ws          1/1     Running   0               52s
+[hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ ./run_kubernetes.sh
+deployment.apps/prj4-project-ml-microservice-kubernetes created
+NAME                                                      READY   STATUS    RESTARTS   AGE
+prj4-project-ml-microservice-kubernetes-d8696b5bf-d46xh   2/2     Running   0          41s
 Forwarding from 127.0.0.1:8080 -> 80
 Forwarding from [::1]:8080 -> 80
 Handling connection for 8080
 
-kubectl get pods
+[hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ kubectl get pods
 NAME                                                              READY   STATUS    RESTARTS        AGE
-prj4-project-ml-microservice-kubernetes-7ff9d7b947-xr6ws          1/1     Running   0               3m18s
+prj4-project-ml-microservice-kubernetes-d8696b5bf-d46xh           2/2     Running   0               3m18s
 
-./make_prediction.sh
+[hoangnv5@cos-262795445 prj4-project-ml-microservice-kubernetes]$ ./make_prediction.sh
 Port: 8000
 {
   "prediction": [
