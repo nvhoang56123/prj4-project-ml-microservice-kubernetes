@@ -2,7 +2,7 @@ version: 2.1
 executors:
   hnguyen3-executor:
     docker:
-      - image: python:3.7.3-stretch
+      - image: python:3.7-alpine3.11
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
 
       # run lint!
       - run:
-          name: Run lint
+          name: Make lint
           command: |
             . venv/bin/activate
             make lint
