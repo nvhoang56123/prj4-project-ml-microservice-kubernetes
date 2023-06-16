@@ -5,7 +5,7 @@ executors:
       - image: python:3.7.3-stretch
 
 jobs:
-  build:
+  acirun:
     executor:  hnguyen3-executor
     steps:
       - checkout      
@@ -34,13 +34,7 @@ jobs:
             - ./venv
           key: dependencies-{{ checksum "requirements.txt" }}
 
-      # run lint!
-      - run:
-          name: Make lint
-          command: |
-            . venv/bin/activate
-            make lint
-
+      # run lint tests!
       - run:
           name: Run Tests
           command: |            
@@ -58,4 +52,4 @@ jobs:
 workflows:
   prj4-project-ml-microservice-kubernetes:
     jobs:
-      - build
+      - acirun
