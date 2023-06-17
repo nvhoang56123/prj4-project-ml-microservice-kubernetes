@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/nvhoang56123/prj4-project-ml-microservice-kubernetes/tree/main.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs/?branch=teesloane-patch-5)
+[![CircleCI](https://circleci.com/gh/nvhoang56123/prj4-project-ml-microservice-kubernetes/tree/main.svg?style=svg)](https://app.circleci.com/pipelines/github/nvhoang56123/prj4-project-ml-microservice-kubernetes)
 
 ## Project Overview
 
