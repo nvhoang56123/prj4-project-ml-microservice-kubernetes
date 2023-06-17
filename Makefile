@@ -6,37 +6,37 @@
 # (Optional) Build a simple integration test
 
 setup:
-	# Create python virtualenv & source it
-	python3 -m venv venv
+    # Create python virtualenv & source it
+    python3 -m venv venv
 
-	# Jump into virtualenv
-	. venv/bin/activate
+    # Jump into virtualenv
+    . venv/bin/activate
 
 install:
-	# This should be run from inside a virtualenv
-	make install
+    # This should be run from inside a virtualenv
+    make install
 
 test:
-	# Additional, optional, tests could go here
-	#python -m pytest -vv --cov=myrepolib tests/*.py
-	#python -m pytest --nbval notebook.ipynb
+    # Additional, optional, tests could go here
+    #python -m pytest -vv --cov=myrepolib tests/*.py
+    #python -m pytest --nbval notebook.ipynb
 
 lint:
-	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
-	# This is linter for Dockerfiles
-	
-	# Download hadolint and save it at /bin/hadolint
-    wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+    # See local hadolint install instructions:   https://github.com/hadolint/hadolint
+    # This is linter for Dockerfiles
+
+    # Download hadolint and save it at /bin/hadolint
+    wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
     # chmod to allow hadolint executable   
-	chmod +x /bin/hadolint
-	# Then it's time to hadolint Dockerfile
-	/bin/hadolint Dockerfile
+    chmod +x /bin/hadolint
+    # Then it's time to hadolint Dockerfile
+    /bin/hadolint Dockerfile
     
-	# Install pylint
+    # Install pylint
     pip install pylint
     # chmod to allow pylint executable
-	chmod +x  venv/bin/pylint
-	# Then it's time to pylint app.py. Ignore couple of policies
-	venv/bin/pylint --disable=R,C,W,E app.py 
+    chmod +x  venv/bin/pylint
+    # Then it's time to pylint app.py. Ignore couple of policies
+    venv/bin/pylint --disable=R,C,W,E app.py 
 
 all: install lint test
