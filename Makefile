@@ -11,10 +11,12 @@ setup:
 
 	# Jump into virtualenv
 	. venv/bin/activate
+	make install
 
 install:
 	# This should be run from inside a virtualenv
-	make install
+	pip install --upgrade pip &&\
+		pip install -r requirements.txt
 
 test:
 	# Additional, optional, tests could go here
