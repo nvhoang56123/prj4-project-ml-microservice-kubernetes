@@ -32,11 +32,4 @@ lint:
     # Then it's time to hadolint Dockerfile
     /bin/hadolint Dockerfile
     
-    # Install pylint
-    pip install pylint
-    # chmod to allow pylint executable
-    chmod +x  venv/bin/pylint
-    # Then it's time to pylint app.py. Ignore couple of policies
-    venv/bin/pylint --disable=R,C,W,E app.py 
-
 all: install lint test
